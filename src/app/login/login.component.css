@@ -1,0 +1,26 @@
+.logincvr{
+    width: 400px;
+    margin: 15px auto;
+    background-color: #ccc;
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 15px;
+    overflow: hidden;
+}
+.logincvr div.formrow{
+    float: left;
+    margin: 5px 0;
+    width: 100%;
+
+}
+.formrow input{
+    float: left;
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+}
+.formrow input[type="button"]{
+    float: right;
+    width: 50%;
+    
+}

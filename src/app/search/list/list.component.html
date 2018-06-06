@@ -1,0 +1,34 @@
+<ng-progress [positionUsing]="'translate3d'" [minimum]="0.15" [maximum]="1"
+[speed]="200" [showSpinner]="false" [direction]="'rightToLeftIncreased'"
+[color]="'red'" [trickleSpeed]="250" [thick]="true" [ease]="'linear'"
+></ng-progress>
+<notification-center-alerts [delay]="2000"></notification-center-alerts>
+<div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let lst of searchlist" >
+      <mat-expansion-panel-header (click)="setasactive(lst)">
+        <mat-panel-title>
+          Bus: {{lst.name}} 
+        </mat-panel-title>
+        <mat-panel-description>
+          From: {{lst.frm}}, To:  {{lst.to}}, On:  {{lst.on}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+      <ul>
+        <li class="seatli" *ngFor="let slist of lst.seats; let i=index" [ngClass]="{'oddrow':i%2!=0}">
+          <div class="seatshow" 
+          [ngClass]="{'nowselected':slist.selected==true,'disabled':slist.bookedby > 0, 'myseatbooked':myuserid == slist.bookedby}" 
+          (click)="selectSeat(slist.sid)">{{slist.sid}}</div>
+          <div class="canceldiv" *ngIf="myuserid == slist.bookedby"><button mat-raised-button (click)="canceltheseat(lst.id,slist.sid)">Cancel</button></div>
+          
+        </li>
+      </ul>
+      <button mat-raised-button (click)="bookseats(lst.id)">Book</button>
+      <div class="amntdiv">Total Amount: {{(totalamt|gstpipe:gstpercentage).price | currency:'INR'}} [Rate {{totalamt|currency:'INR'}}  GST {{(totalamt|gstpipe:gstpercentage).gst | currency:'INR'}} ({{gstpercentage}}% GST)]<br>
+          Seats: <span><span>{{seatsstr}}</span></span>
+      </div>
+    </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

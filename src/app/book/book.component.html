@@ -1,0 +1,41 @@
+<div>
+  <notification-center-alerts [delay]="2000"></notification-center-alerts>
+  <div>Selected bus: {{selectedforbook.name}}</div>
+  <div>From - {{selectedforbook.frm}}</div>
+  <div>To - {{selectedforbook.to}}</div>
+  <div>Seats-
+    <span *ngFor="let s of selectedseats">{{s.sid}}, </span>
+  </div>
+  <div>Amount - {{(totalamount|gstpipe:gstpercentage).price | currency:'INR'}} ({{(totalamount|gstpipe:gstpercentage).gst | currency:'INR'}}
+    GST)</div>
+    <div>
+      Select Payment Mode <span>
+          <mat-form-field>
+              <mat-select placeholder="Select mode" [(ngModel)]="paytype">
+                  <mat-option [value]=1>Internet Banking</mat-option>
+                  <mat-option [value]=2>Credit Card</mat-option>
+                  <mat-option [value]=3>COD</mat-option>
+              </mat-select>
+            </mat-form-field>
+        <!-- <select [(ngModel)]="paytype">
+          <option [value]=1>Internet Banking</option>
+          <option [value]=2>Credit Card</option>
+          <option [value]=3>COD</option>
+      </select> --></span>
+    </div>
+    <div [ngSwitch]="paytype">
+      <div *ngSwitchCase=1>
+        <app-ibanking [totalprice]="(totalamount|gstpipe:gstpercentage).price | currency:'INR'" (payevent)="purchaseTicket()"></app-ibanking>
+      </div>
+      <div *ngSwitchCase=2>
+         <app-creditcard [totalprice]="(totalamount|gstpipe:gstpercentage).price | currency:'INR'" (payevent)="purchaseTicket()"></app-creditcard>
+      </div>
+      <div *ngSwitchDefault>
+          <app-cod [totalprice]="(totalamount|gstpipe:gstpercentage).price | currency:'INR'" (payevent)="purchaseTicket()"></app-cod>
+      </div>
+
+    </div>
+  <!-- <div>
+    <button (click)="purchaseTicket()">Pay</button>
+  </div> -->
+</div>

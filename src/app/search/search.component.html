@@ -1,0 +1,30 @@
+<div>
+  Search From:
+  <mat-form-field>
+    <mat-select placeholder="From" [(ngModel)]="Frm">
+      <mat-option value="Tvm">
+        Tvm
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  To:
+  <mat-form-field>
+    <mat-select placeholder="To" [(ngModel)]="To">
+      <mat-option value="Ers"> ERS </mat-option>
+      <mat-option value="KLM"> KLM </mat-option>
+    </mat-select>
+  </mat-form-field>
+  On:
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="onDt" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <!-- <mat-form-field>
+      <mat-select placeholder="Date" [(ngModel)]="onDt">
+        <mat-option value="28/05/2018"> 28/05/2018 </mat-option>
+        <mat-option value="29/05/2018"> 29/05/2018 </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+  <button mat-fab (click)="searchBus()">Search</button>
+</div>

@@ -1,0 +1,18 @@
+<div class="logincvr">
+  <h3>Login</h3>
+  <div class="formrow">
+      <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="username" placeholder="Username" value="dd">
+        </mat-form-field>
+</div>
+<div class="formrow">
+    <mat-form-field class="example-full-width">
+        <input type="password" matInput placeholder="password" [(ngModel)]="password" >
+      </mat-form-field>
+</div>
+<div class="formrow">
+  <!-- <input type="button" value="Login">-->
+  <button mat-raised-button (click)="loginuser()">Login</button>
+</div>
+</div>
+

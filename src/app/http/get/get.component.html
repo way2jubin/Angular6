@@ -1,0 +1,26 @@
+<div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let lst of busjson" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Bus: {{lst.name}} 
+        </mat-panel-title>
+        <mat-panel-description>
+          From: {{lst.frm}}, To:  {{lst.to}}, On:  {{lst.on}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+      <ul>
+        <li class="seatli" *ngFor="let slist of lst.seats; let i=index" [ngClass]="{'oddrow':i%2!=0}">
+          <div class="seatshow" 
+          [ngClass]="{'nowselected':slist.selected==true,'disabled':slist.bookedby > 0, 'myseatbooked':myuserid == slist.bookedby}" 
+          >{{slist.sid}}</div>
+          <div class="canceldiv" *ngIf="myuserid == slist.bookedby"><button mat-raised-button (click)="canceltheseat(lst.id,slist.sid)">Cancel</button></div>
+          
+        </li>
+      </ul>
+      <button mat-raised-button>Book</button>
+    </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

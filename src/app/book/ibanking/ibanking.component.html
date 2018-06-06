@@ -1,0 +1,29 @@
+<span>
+  <mat-radio-group [(ngModel)]="ibank1" >
+      <mat-radio-button *ngFor="let rd of banks" [value]="rd.id" >{{rd.name}}</mat-radio-button>
+    
+    </mat-radio-group>
+</span>
+<div [ngSwitch]="ibank1">
+  <span *ngFor="let rd of banks">
+    <div *ngSwitchCase="rd.id">
+      Total Payment for {{rd.name}} {{totalprice}} ({{rd.fees}}% Charge on Bank)
+      <br> {{rd.name}} login
+      <br> Username: 
+      <mat-form-field>
+          <input matInput type="text">
+      </mat-form-field>
+       Paasword:
+       <mat-form-field>
+          <input matInput type="password">
+       </mat-form-field>
+      
+      <div>
+        <button mat-raised-button (click)="paynow()">Pay</button>
+      </div>
+    </div>
+  </span>
+  <div *ngSwitchDefault>
+    Please select any bank..
+  </div>
+</div>
