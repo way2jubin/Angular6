@@ -17,7 +17,7 @@ export class DatamanageService {
   gstpercentage = 20;
   totalprice
   // routefrom
-  buslist = [
+  buslist /* = [
     {
       id: 1, name:'Scania', frm: 'Tvm', to: 'Ers', on: '6/1/2018',amt:100, seats: [
         {
@@ -86,7 +86,7 @@ export class DatamanageService {
         },
       ]
     }
-  ];
+  ]; */
   constructor() { }
   validateuser(uname, pass) {
     let uid = this.users.find(val => val.username == uname && val.password == pass);

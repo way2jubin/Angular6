@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgProgressModule } from 'ngx-progressbar';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationCenterModule, NotificationCenter } from "ngx-notification-center";
 
 
@@ -18,7 +18,9 @@ import { FooterComponent } from './footer/footer.component';
 import { CustomMaterialsModule } from './custom-materials/custom-materials.module';
 import { GetComponent } from './http/get/get.component';
 import { PostComponent } from './http/post/post.component';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+import { TemplateComponent } from './forms/template/template.component';
+import { ReactiveComponent } from './forms/reactive/reactive.component'
 
 
 
@@ -27,8 +29,10 @@ const myroutes: Routes = [
   { path: 'search', component: SearchComponent, canActivate: [RouteguardService] },
   { path: 'search/result', loadChildren: 'src/app/childroutes/childroutes.module#ChildroutesModule' },
   { path: 'logout', component: LogoutComponent, canActivate: [RouteguardService] },
-  { path: 'http/get',component:GetComponent},
-  { path: 'http/post',component:PostComponent},
+  { path: 'http/get',component:GetComponent, canActivate: [RouteguardService]},
+  { path: 'http/post',component:PostComponent, canActivate: [RouteguardService]},
+  { path: 'form/template',component:TemplateComponent, canActivate: [RouteguardService]},
+  { path: 'form/reactive',component:ReactiveComponent, canActivate: [RouteguardService]},
   { path: '**', component: LoginComponent }
 ];
 
@@ -41,7 +45,9 @@ const myroutes: Routes = [
     HeaderComponent,
     FooterComponent,
     GetComponent,
-    PostComponent
+    PostComponent,
+    TemplateComponent,
+    ReactiveComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,8 @@ const myroutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     CustomMaterialsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [RouteguardService, DatamanageService],
   bootstrap: [AppComponent],

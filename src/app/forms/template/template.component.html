@@ -1,0 +1,33 @@
+<div class="logincvr">
+  <form #myeventForm="ngForm" (ngSubmit)="savedata(myeventForm)">
+    <h3>Template Form</h3>
+    <div class="formrow">
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput [(ngModel)]="uname" name="uname" placeholder="Username" required value="">
+        
+      </mat-form-field>
+      <div *ngIf="myeventForm.controls.uname?.invalid && myeventForm.controls.uname?.touched">Name is required</div>
+    </div>
+    <div class="formrow">
+        <mat-form-field class="example-full-width">
+          <input type="text" matInput [(ngModel)]="email" name="email" placeholder="Email" email required value="">
+        </mat-form-field>
+      </div>
+    <div class="formrow">
+      <mat-form-field class="example-full-width">
+        <input type="password" matInput placeholder="Password" [(ngModel)]="pass1" required name="pass1">
+      </mat-form-field>
+    </div>
+    <div class="formrow">
+      <mat-form-field class="example-full-width">
+        <input type="password" matInput placeholder="Confirm Password" [(ngModel)]="pass2" name="pass2">
+      </mat-form-field>
+      <em *ngIf="myeventForm.controls.pass1?.value != myeventForm.controls.pass2?.value">Passwords not match</em>
+    </div>
+    <div class="formrow">
+      <!-- <input type="button" value="Login">-->
+      <button [disabled]="myeventForm.invalid || myeventForm.controls.pass1?.value != myeventForm.controls.pass2?.value" mat-raised-button type="submit">Submit</button>
+    </div>
+    
+  </form>
+</div>

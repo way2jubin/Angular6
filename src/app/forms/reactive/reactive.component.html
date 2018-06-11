@@ -1,0 +1,31 @@
+<div class="logincvr">
+    <form [formGroup]="myReactForm" (ngSubmit)="saveFormData(myReactForm)">
+      <h3>Reactive Form</h3>
+      <div class="formrow">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="uname" placeholder="Username" value="">
+        </mat-form-field> 
+        <em *ngIf="myReactForm.get('uname').hasError('invalid')">This field is required</em>
+      </div>
+      <div class="formrow">
+          <mat-form-field class="example-full-width">
+            <input matInput formControlName="email" placeholder="Email" value="">
+          </mat-form-field>
+        </div>
+      <div class="formrow">
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput placeholder="Password" formControlName="pass1">
+        </mat-form-field>
+      </div>
+      <div class="formrow">
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput placeholder="Confirm Password" formControlName="pass2">
+        </mat-form-field>
+        <em *ngIf="pass1.value != pass2.value">Passwords not match</em>
+      </div>
+      <div class="formrow">
+        <button mat-raised-button type="submit" 
+        [disabled]="myReactForm.invalid || pass1.value != pass2.value">Submit</button>
+      </div>
+    </form>
+  </div>

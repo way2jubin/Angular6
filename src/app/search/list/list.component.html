@@ -7,7 +7,7 @@
   <mat-accordion>
     <mat-expansion-panel *ngFor="let lst of searchlist" >
       <mat-expansion-panel-header (click)="setasactive(lst)">
-        <mat-panel-title>
+        <mat-panel-title [style.color]="getStyle()">
           Bus: {{lst.name}} 
         </mat-panel-title>
         <mat-panel-description>
