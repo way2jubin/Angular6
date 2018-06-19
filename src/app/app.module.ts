@@ -20,7 +20,11 @@ import { GetComponent } from './http/get/get.component';
 import { PostComponent } from './http/post/post.component';
 import { HttpClientModule} from '@angular/common/http';
 import { TemplateComponent } from './forms/template/template.component';
-import { ReactiveComponent } from './forms/reactive/reactive.component'
+import { ReactiveComponent } from './forms/reactive/reactive.component';
+import { CustomobservableComponent } from './customobservable/customobservable.component';
+import { CustomAlertComponent } from './custom-alert/custom-alert.component'
+import { CustomAlertSService } from './custom-alert-s.service';
+import { LifecycleComponent } from './lifecycle/lifecycle.component';
 
 
 
@@ -33,6 +37,7 @@ const myroutes: Routes = [
   { path: 'http/post',component:PostComponent, canActivate: [RouteguardService]},
   { path: 'form/template',component:TemplateComponent, canActivate: [RouteguardService]},
   { path: 'form/reactive',component:ReactiveComponent, canActivate: [RouteguardService]},
+  { path: 'observable',component:CustomobservableComponent, canActivate: [RouteguardService]},
   { path: '**', component: LoginComponent }
 ];
 
@@ -47,7 +52,10 @@ const myroutes: Routes = [
     GetComponent,
     PostComponent,
     TemplateComponent,
-    ReactiveComponent
+    ReactiveComponent,
+    CustomobservableComponent,
+    CustomAlertComponent,
+    LifecycleComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +66,7 @@ const myroutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [RouteguardService, DatamanageService],
+  providers: [RouteguardService, DatamanageService,CustomAlertSService],
   bootstrap: [AppComponent],
   entryComponents: []
 })

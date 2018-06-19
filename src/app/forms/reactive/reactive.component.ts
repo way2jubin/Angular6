@@ -26,7 +26,10 @@ export class ReactiveComponent implements OnInit {
   }
   
   mycustomvalidate(aaa:AbstractControl){
-    console.log(aaa.value);
+    //console.log(aaa.value);
+    let a= aaa.parent
+    console.log("sddsdsdsdsd")
+    console.log(a)
     return {};
   }
   saveFormData(data){
